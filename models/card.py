@@ -3,5 +3,7 @@ class Card:
         self.farbe = farbe
         self.bezeichnung = bezeichnung
         self.wert = wert
-        pass
-    pass
+    
+    def __str__(self):
+        karte = "Kart: " + self.farbe + self.bezeichnung
+        return karte
