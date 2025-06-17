@@ -6,8 +6,7 @@ class Hand:
 
     def __str__(self):
         karten_str = ", ".join(str(karte) for karte in self.cardsInHand)
-        punkte = self.getPoints()
-        return f"Hand: {karten_str}\nPunkte: {punkte}"
+        return f"{karten_str}"
     
     def addCard(self, card):
         self.cardsInHand.append(card)

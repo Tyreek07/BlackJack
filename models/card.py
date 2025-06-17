@@ -5,5 +5,5 @@ class Card:
         self.wert = wert
     
     def __str__(self):
-        karte = "Karte: " + self.farbe + self.bezeichnung
+        karte = self.farbe + self.bezeichnung
         return karte

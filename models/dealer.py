@@ -15,35 +15,28 @@ class Dealer:
     def __str__(self):
         pass
 
-    def greeting(self):
-        print("Hallo, meine Name ist", self.name, "möchten Sie ihre Wette platzieren?")
+    def greeting(self, spielerName, spielerGeld):
+        print("Hallo " + spielerName + "! Meine Name ist", self.name)
+        print("Sie haben", spielerGeld, "€ Guthaben. Viel Glück!")
+        print("Bitte platzieren Sie Ihren Wettbetrag!")
+
+    def drawCard(self, card):
+        self.hand.addCard(card)
+
+    def resetHand(self):
+        print(self.name, "gibt die Karten ab")
+        self.hand = Hand()
 
     def anotherRound(self):
         print("Wollen Sie eine weitere Runde spielen?")
-        self.resetHand()
 
-    def ziehtErsteKarte(self):
-        self.hand.addCard()
-        print(self.name + ": ")
-        self.hand.showHand()
-
-    # Dealer zieht Karte
-    def playGame(self):
-        kartenWert =  self.hand.getPoints()
-        while kartenWert < 16:
-            print(self.name, "zieht eine Karte")
-            self.hand.addCard()
-            kartenWert =  self.hand.getPoints()
-        self.sayStopp()
+    def askAnotherCard(self):
+        print("Möchten Sie eine weitere Karte ziehen?")
 
     def sayStopp(self):
-        print(self.name, "zieht nicht mehr!")
-        self.showHand()
-        punkte = self.hand.getPoints
-        print(self.name, " hat ", punkte, "Punkte")
+        print(self.name, "zieht nicht mehr!\n\n\n")
 
-    def resetHand(self):
-        self.hand = Hand()
+
 
         
 

@@ -13,9 +13,9 @@ class Player:
         pass
 
     # Spieler zieht Karte
-    def sayCard(self):
+    def sayCard(self, card):
         print(self.name, ": Eine Karte bitte!")
-        self.hand.addCard()
+        self.hand.addCard(card)
 
     # Spieler stoppt, wünscht keine weiteren Karten
     def sayStopp(self):
@@ -57,7 +57,7 @@ class Player:
         print(self.name, ": Ohje meine hart verdienten ", self.wette, "€")
 
     def resetHand(self):
-        print(self.name, ": Nur wer spielt kann gewinnen!")
+        print(self.name, "gibt die Karten zurück")
         self.hand = Hand()
 
         

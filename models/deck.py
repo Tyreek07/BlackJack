@@ -18,6 +18,6 @@ class Deck:
         random.shuffle(self.cards)
         print("Karten wurden gemischt!")
 
-    def drawCard(self):
-        print(self.cards[-1], " wurde gezogen!")
+    def drawCard(self, name):
+        print(name, "bekommt eine Karte!")
         return self.cards.pop()
