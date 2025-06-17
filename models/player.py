@@ -3,14 +3,14 @@ from models.hand import Hand
 
 class Player:
     def __init__(self, name, geld = 100):
-        self.name = name
+        self.name = "Spieler "+ name
         self.hand = Hand()
         self.geld = geld
         self.wette = 0
 
-    # Funktion für Wette platzieren
-    # Funktion für Geld hinzufügen bzw abrechnen
     # Funktion für Name des Spielers mit Geld ausgeben __str__
+    def __str__(self):
+        pass
 
     # Spieler zieht Karte
     def sayCard(self):
@@ -33,9 +33,6 @@ class Player:
         if anzahlKarten == 2 and (wertKarten == 10 or wertKarten == 11 or wertKarten == 9) and genugGeld >= 0:
             self.geld -= self.wette
             self.sayCard()
-            # Spiel beenden
-            pass
-        pass
 
     def placeBet(self, betrag):
         genugGeld = self.geld - self.wette
@@ -62,7 +59,6 @@ class Player:
     def resetHand(self):
         print(self.name, ": Nur wer spielt kann gewinnen!")
         self.hand = Hand()
-        pass
 
         
 
