@@ -30,7 +30,7 @@ class Dealer:
     # Dealer zieht Karte
     def playGame(self):
         kartenWert =  self.hand.getPoints()
-        while kartenWert >= 16:
+        while kartenWert < 16:
             print(self.name, "zieht eine Karte")
             self.hand.addCard()
             kartenWert =  self.hand.getPoints()
