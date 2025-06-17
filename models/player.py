@@ -14,11 +14,12 @@ class Player:
 
     # Spieler zieht Karte
     def sayCard(self):
-        print(self.name, ": Eine Karte bitte")
+        print(self.name, ": Eine Karte bitte!")
         self.hand.addCard()
 
     # Spieler stoppt, wünscht keine weiteren Karten
     def sayStopp(self):
+        print(self.name, ": Stopp, keine Karten mehr!")
         self.showHand()
         punkte = self.hand.getPoints
         print(self.name, " hat ", punkte, "Punkte")
@@ -31,8 +32,7 @@ class Player:
         genugGeld = self.geld - self.wette
         if anzahlKarten == 2 and (wertKarten == 10 or wertKarten == 11 or wertKarten == 9) and genugGeld >= 0:
             self.geld -= self.wette
-            # Spieler zieht noch eine Karte
-            # Spieler doppelt einsatz
+            self.sayCard()
             # Spiel beenden
             pass
         pass
