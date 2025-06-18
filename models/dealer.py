@@ -16,8 +16,7 @@ class Dealer:
         pass
 
     def greeting(self, spielerName, spielerGeld):
-        print("Hallo " + spielerName + "! Meine Name ist", self.name)
-        print("Sie haben", spielerGeld, "€ Guthaben. Viel Glück!")
+        print(spielerName + " hat "+ str(spielerGeld) + "€")
         print("Bitte platzieren Sie Ihren Wettbetrag!")
 
     def drawCard(self, card):

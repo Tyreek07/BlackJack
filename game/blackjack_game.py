@@ -7,15 +7,13 @@ class BlackjackGame:
         self.dealer = Dealer("Jeff")
         self.player = Player("Tyreek", geld=100)
         self.deck = Deck()
-        self.bet = 0
 
     def initializeGame(self):
         # Dealer grüßt und fragt nach Wette
         self.dealer.greeting(self.player.name, self.player.geld)
-
         # Spieler kann Wette platzieren
-        self.bet = int(input())
-        self.player.placeBet(self.bet)
+        bet = int(input())
+        self.player.placeBet(bet)
 
         # Karten werden gemischt
         print("Okay es geht Los!")
@@ -39,7 +37,7 @@ class BlackjackGame:
                 break
         
             self.dealer.askAnotherCard()
-            choice = input("Type (y) or (n): ").lower()
+            choice = input("Tippe (j) oder (n): ").lower()
 
             if choice == "y":
                 self.player.hand.addCard(self.deck.drawCard(self.player.name))
@@ -59,24 +57,35 @@ class BlackjackGame:
     def determineWinner(self):
         dealerPoints = self.dealer.hand.getPoints()
         playerPoints = self.player.hand.getPoints()
-        print(f"{self.player.name} finales Hand (Punkte): {self.player.hand} ({self.player.hand.getPoints()})")
-        print(f"{self.dealer.name} finales Hand (Punkte): {self.dealer.hand} ({self.dealer.hand.getPoints()})")
+        print(f"{self.player.name} Finale Hand (Punkte): {self.player.hand} ({self.player.hand.getPoints()})")
+        print(f"{self.dealer.name} Finale Hand (Punkte): {self.dealer.hand} ({self.dealer.hand.getPoints()})")
         if playerPoints > 21 or (playerPoints < dealerPoints and dealerPoints <= 21):
-            print("\nErgebnis: Dealer won the game")
+            print("\nErgebnis: Dealer hat gewonnen\nSie habent"+str(self.player.wette)+"€ velroren!")
+            self.player.loseBet()
         elif dealerPoints == playerPoints:
             print("\nErgebnis: Keiner hat gewonnen")
+            self.player.drawBet()
         else:
-            print("\nErgebnis: Player won the game")
+            print("\nErgebnis: Spieler hat gewonnen\nSie haben"+str(self.player.wette)+"€ gewonnen!")
+            self.player.winBet()
 
     def restartGame(self):
-        pass
+        print("Do you want to play another round?")
+        answer = input("Tippe (j) für 'ja habibi' oder (n) für 'nein Danke': ").lower()
+        if answer == 'n':
+            print("Danke fürs spielen!\nWir sehen uns sicher bald wieder ;)")
+        else:
+            self.player.resetHand()
+            self.dealer.resetHand()
+            self.play()
+                
 
     def play(self):
-        print("Lets play BlackJack")
         self.initializeGame()
         self.playerTurn()
         self.dealerTurn()
         self.determineWinner()
+        self.restartGame()
 
     # Wenn Spieler kein Geld hat rauswerfen
     # Wenn Spieler keine Lust mehr hat beenden

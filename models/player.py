@@ -35,17 +35,21 @@ class Player:
             self.sayCard()
 
     def placeBet(self, betrag):
+        self.wette = betrag
         genugGeld = self.geld - self.wette
 
-        if genugGeld < 0:
-            self.wette = betrag
+        if genugGeld >= 0:
             self.geld -= self.wette
-            print(self.name, ": Ich setze ", self.wette)
+            print(self.name +": Ich setze", str(self.wette)+"€")
+        else:
+            print("Sie hatten nicht genug Geld dafür, daher nutzen wir ein All-In Prinzip, Sie haben", str(self.geld)+"€", "gewettet")
+            self.wette = self.geld
+            self.geld-= self.wette
 
     def winBet(self):
         self.geld += (self.wette * 2) 
         self.wette = 0
-        print(self.name, ": Yippie jetzt habe ich ", self.geld, "€")
+        print(self.name, ": Yippie jetzt habe ich ", str(self.geld), "€")
 
     def drawBet(self):
         self.geld += (self.wette) 
@@ -54,7 +58,7 @@ class Player:
 
     def loseBet(self):
         self.wette = 0
-        print(self.name, ": Ohje meine hart verdienten ", self.wette, "€")
+        print(self.name, ": Ohje meine hart verdienten ", str(self.wette), "€")
 
     def resetHand(self):
         print(self.name, "gibt die Karten zurück")
